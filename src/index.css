@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@theme {
+  --color-boss-cream: #f7f7f5;
+  --color-boss-ink: #171c18;
+  --color-boss-olive: #666832;
+  --color-boss-olive-dark: #4c5129;
+  --color-boss-moss: #8b8e55;
+  --color-boss-mist: #eeefe9;
+  --color-boss-ice: #9cc6d3;
+  --font-display: "Manrope", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+}
+
+:root {
+  --paper: #f7f7f5;
+  --ink: #171c18;
+  --olive: #666832;
+  --olive-dark: #4c5129;
+  --ice: #9cc6d3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 110px;
+}
+
+::selection {
+  background: var(--olive);
+  color: white;
+}
+
+.container-shell {
+  width: min(100% - 2.5rem, 1280px);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-shell {
+    width: min(100% - 4rem, 1280px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-shell {
+    width: min(100% - 6rem, 1280px);
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.section-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+@layer components {
+  .body-copy {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: clamp(14px, 1.05vw, 16px);
+    line-height: 1.65;
+    color: #6f756c;
+  }
+}
+
+.btn-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  height: 48px;
+  padding: 0 6px 0 22px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgb(23 28 24 / 0.14);
+}
+
+.btn-light {
+  background: #fff;
+  color: var(--ink);
+}
+
+.btn-olive {
+  background: var(--olive);
+  color: #fff;
+}
+
+.btn-text-mask {
+  position: relative;
+  display: block;
+  height: 1.2em;
+  overflow: hidden;
+  line-height: 1.2em;
+}
+
+.btn-text-mask > span {
+  display: block;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill:hover .btn-text-mask > span {
+  transform: translateY(-100%);
+}
+
+.btn-arrow {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  place-items: center;
+  border-radius: 999px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-light .btn-arrow {
+  background: var(--olive);
+  color: #fff;
+}
+
+.btn-olive .btn-arrow {
+  background: #fff;
+  color: var(--olive);
+}
+
+.btn-pill:hover .btn-arrow {
+  transform: rotate(45deg);
+}
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--olive);
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.arrow-link:hover {
+  gap: 0.85rem;
+  color: var(--ink);
+}
+
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 20px;
+  border: 1px solid rgb(102 104 50 / 0.5);
+  border-radius: 999px;
+  color: #545a4d;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.pill-tag:hover {
+  background: var(--olive);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.photo-wash {
+  filter: saturate(0.86) contrast(1.04);
+}
+
+.hero-line {
+  overflow: hidden;
+  display: block;
+}
+
+.hero-line-inner {
+  display: block;
+  will-change: transform;
+}
+
+.image-reveal {
+  overflow: hidden;
+}
+
+.image-reveal img {
+  will-change: transform;
+}
+
+.wave-lines {
+  position: absolute;
+  inset: -15% -8%;
+  width: 116%;
+  height: 130%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.plan-enter {
+  animation: planFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.plan-enter > *:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.plan-enter > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+@keyframes planFade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes softSpin {
+  to { transform: rotate(360deg); }
+}
+
+.float-y {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+.soft-spin {
+  animation: softSpin 18s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
