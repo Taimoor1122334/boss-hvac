@@ -515,7 +515,7 @@ export const plans: Plan[] = [
 ];
 
 export const team = [
-  { name: "Marcus Cole", role: "Founder & Service Director", image: "images/team-1.jpg" },
+  { name: "Sam", role: "Founder & CEO", image: "images/sam.png" },
   { name: "Elena Reyes", role: "Comfort Specialist", image: "images/team-2.jpg" },
   { name: "Daniel Brooks", role: "Lead Systems Engineer", image: "images/team-3.jpg" },
   { name: "Maya Chen", role: "Air Quality Lead", image: "images/team-4.jpg" },

@@ -36,18 +36,18 @@ export function AboutPage({ openQuote }: { openQuote: () => void }) {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <PillButton label="Explore Services" href="#/services" variant="olive" />
-              <span className="font-body text-[12px] text-boss-ink/50">Marcus Cole, Founder</span>
+              <span className="font-body text-[12px] text-boss-ink/50">Sam, Founder &amp; CEO</span>
             </div>
           </div>
 
           <div data-reveal className="relative overflow-hidden rounded-[20px] bg-boss-mist">
-            <Photo src="images/team-1.jpg" alt="Marcus Cole, BOSS founder and service director" className="h-[310px] w-full object-cover sm:h-[370px]" />
+            <Photo src="images/sam.png" alt="Sam, BOSS founder and CEO" className="h-[310px] w-full object-cover sm:h-[370px]" />
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-[13px] border border-white/25 bg-black/30 px-4 py-3 text-white backdrop-blur-md">
               <div>
-                <p className="text-[14px] font-semibold">Marcus Cole</p>
-                <p className="font-body text-[10px] text-white/70">Founder &amp; Service Director</p>
+                <p className="text-[14px] font-semibold">Sam</p>
+                <p className="font-body text-[10px] text-white/70">Founder &amp; CEO</p>
               </div>
-              <a href="#/contact" aria-label="Contact Marcus Cole" className="grid h-8 w-8 place-items-center rounded-full border border-white/40">
+              <a href="#/contact" aria-label="Contact Sam" className="grid h-8 w-8 place-items-center rounded-full border border-white/40">
                 <Network size={14} />
               </a>
             </div>
