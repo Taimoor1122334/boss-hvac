@@ -18,6 +18,14 @@ import {
   type SiteRoute,
 } from "./lib/router";
 
+function scrollToHomeSection(id: string) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 0;
+  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12;
+  window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+}
+
 export default function App() {
   const [route, setRoute] = useState<SiteRoute>(() => parseRoute());
   const [quoteOpen, setQuoteOpen] = useState(false);
@@ -58,9 +66,9 @@ export default function App() {
 
     if (section) {
       const timer = window.setTimeout(() => {
-        document.getElementById(section)?.scrollIntoView({ behavior: "smooth", block: "start" });
         ScrollTrigger.refresh();
-      }, 300);
+        scrollToHomeSection(section);
+      }, 50);
       return () => window.clearTimeout(timer);
     }
 
@@ -78,8 +86,18 @@ export default function App() {
       const href = anchor.getAttribute("href") ?? "";
 
       if (href.startsWith("#/")) {
+        const next = parseRoute(href);
+        if (next.section) {
+          event.preventDefault();
+          anchor.focus({ preventScroll: true });
+          if (window.location.hash !== href) {
+            window.location.hash = href.slice(1);
+          }
+          window.setTimeout(() => scrollToHomeSection(next.section!), route.path === "/" ? 80 : 350);
+          return;
+        }
         // Clicking the page you're already on returns you to the top.
-        if (parseRoute(href).key === route.key) {
+        if (next.key === route.key) {
           event.preventDefault();
           window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         }
@@ -93,7 +111,7 @@ export default function App() {
 
       if (route.path === "/" && section) {
         event.preventDefault();
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollToHomeSection(id);
         window.history.replaceState(null, "", homeSectionHref(id));
         return;
       }

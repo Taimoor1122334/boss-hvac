@@ -5,6 +5,7 @@ import { InnerCTA } from "../components/InnerCTA";
 import { Photo } from "../components/Photo";
 import { Eyebrow, PillButton, WaveLines } from "../components/ui";
 import { coreValues, milestones, stats, team } from "../data";
+import { stock } from "../lib/assets";
 import { cn } from "../utils/cn";
 
 export function AboutPage({ openQuote }: { openQuote: () => void }) {
@@ -15,12 +16,12 @@ export function AboutPage({ openQuote }: { openQuote: () => void }) {
     <>
       <PageHero
         eyebrow="About BOSS"
-        title={"Built on Craft.\nDriven by Care."}
-        description="For more than 25 years, BOSS has raised the standard for residential and commercial comfort—one precise installation, one honest recommendation, and one dependable service call at a time."
-        image="images/boss-workshop.jpg"
-        fallback="images/boss-hero.jpg"
+        title={"A heating and cooling company since 2001."}
+        description="Sam started BOSS with one van. We still diagnose the actual problem, put the price in writing, and stand behind the install."
+        image={stock.mechanical}
+        fallback={stock.home}
         crumb="About Us"
-        ctaLabel="Book a Consultation"
+        ctaLabel="Schedule service"
         onCta={openQuote}
         meta={["Founded 2001", "25+ years of service", "Certified local teams"]}
       />
@@ -47,7 +48,7 @@ export function AboutPage({ openQuote }: { openQuote: () => void }) {
                 <p className="text-[14px] font-semibold">Sam</p>
                 <p className="font-body text-[10px] text-white/70">Founder &amp; CEO</p>
               </div>
-              <a href="#/contact" aria-label="Contact Sam" className="grid h-8 w-8 place-items-center rounded-full border border-white/40">
+              <a href="#/contact" aria-label="Contact Sam" className="grid h-8 w-8 place-items-center rounded-full border border-white/40 transition hover:bg-white hover:text-boss-ink">
                 <Network size={14} />
               </a>
             </div>
@@ -138,7 +139,7 @@ export function AboutPage({ openQuote }: { openQuote: () => void }) {
             </div>
 
             <div data-reveal className="image-reveal min-h-[330px] overflow-hidden rounded-[20px]">
-              <Photo src="images/boss-service-team.jpg" alt="BOSS certified service team" className="h-full w-full object-cover" />
+              <Photo src={stock.crew} alt="BOSS certified service team" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>

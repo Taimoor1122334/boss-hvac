@@ -6,6 +6,7 @@ import { ServiceMap } from "../components/ServiceMap";
 import { Photo } from "../components/Photo";
 import { Eyebrow, PillButton, WaveLines } from "../components/ui";
 import { locationRegions, type LocationRegion } from "../data";
+import { stock } from "../lib/assets";
 import { cn } from "../utils/cn";
 
 const filters = ["All", "Residential", "Commercial", "Coastal"] as const;
@@ -44,13 +45,13 @@ export function LocationsPage({ openQuote }: { openQuote: () => void }) {
   return (
     <>
       <PageHero
-        eyebrow="Service Locations"
-        title={"Local Teams.\nFast Response."}
-        description="BOSS crews are based where you live and work. Fully stocked vehicles, local dispatch, and technicians who understand the buildings and climate in every region we cover."
-        image="images/boss-hero.jpg"
-        fallback="images/boss-service-team.jpg"
+        eyebrow="Service area"
+        title={"Six shops. Stocked trucks."}
+        description="If we cover your address, we tell you the arrival window before the truck rolls. North County, Metro Core, Coastal District, West Valley, Riverside, and South Bay."
+        image={stock.home}
+        fallback={stock.acService}
         crumb="Locations"
-        ctaLabel="Find My Technician"
+        ctaLabel="Check my address"
         onCta={openQuote}
         meta={["6 local regions", "29 field crews", "24/7 dispatch"]}
       />
@@ -97,7 +98,7 @@ export function LocationsPage({ openQuote }: { openQuote: () => void }) {
               >
                 <div className="grid gap-0 sm:grid-cols-[0.9fr_1.1fr]">
                   <div className="image-reveal relative h-[210px] overflow-hidden sm:h-full sm:min-h-[300px]">
-                    <Photo src={region.image} fallback="images/boss-hero.jpg" alt={region.name} className="h-full w-full object-cover photo-wash" />
+                    <Photo src={region.image} fallback={stock.home} alt={region.name} className="h-full w-full object-cover photo-wash" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
                     <span className="absolute left-4 top-4 rounded-full border border-white/50 bg-black/25 px-3 py-1.5 text-[10px] font-bold tracking-[0.15em] text-white backdrop-blur-md">
                       {region.number}

@@ -6,9 +6,10 @@ import { Photo } from "../components/Photo";
 import { ArrowLink, Eyebrow, PillButton, WaveLines, serviceIcons } from "../components/ui";
 import { pageHref, serviceHref } from "../lib/router";
 import { plans, projects, services, stats } from "../data";
+import { stock } from "../lib/assets";
 import { cn } from "../utils/cn";
 
-const filters = ["All", "Residential", "Commercial", "Air Quality", "Maintenance"] as const;
+const filters = ["All", "Residential", "Air Quality", "Maintenance"] as const;
 type Filter = (typeof filters)[number];
 
 const process = [
@@ -41,11 +42,11 @@ export function ServicesPage({ openQuote }: { openQuote: () => void }) {
   return (
     <>
       <PageHero
-        eyebrow="BOSS Services"
-        title={"Every Service.\nOne Standard."}
-        description="Heating, cooling, air quality, and preventive care—engineered as complete systems, delivered by local technicians who know what reliable comfort requires."
-        image="images/boss-service-team.jpg"
-        fallback="images/boss-hero.jpg"
+        eyebrow="Services"
+        title={"Repair, replacement, and maintenance."}
+        description="Air conditioning, furnaces, heat pumps, filtration, and maintenance plans for homes and small commercial buildings."
+        image={stock.crew}
+        fallback={stock.acService}
         crumb="Services"
         ctaLabel="Request an Estimate"
         onCta={openQuote}
@@ -83,19 +84,18 @@ export function ServicesPage({ openQuote }: { openQuote: () => void }) {
             ))}
           </div>
 
-          <div key={filter} className="plan-enter mt-8 grid gap-5 md:grid-cols-2">
+          <div key={filter} className="mt-8 grid gap-5 md:grid-cols-2">
             {filteredServices.map((service, index) => {
               const Icon = serviceIcons[service.icon];
               return (
                 <a
                   key={service.slug}
                   href={serviceHref(service.slug)}
-                  data-reveal
-                  className="group overflow-hidden rounded-[22px] bg-boss-cream transition-transform duration-500 hover:-translate-y-1"
+                  className="group flex flex-col overflow-hidden rounded-[22px] bg-boss-cream shadow-sm transition-shadow duration-300 [clip-path:inset(0_round_22px)] hover:shadow-[0_16px_36px_rgba(20,32,51,0.12)]"
                 >
-                  <div className="image-reveal relative h-[280px] overflow-hidden sm:h-[330px]">
-                    <Photo src={service.image} fallback="images/about-install.jpg" alt={service.badge} className="h-full w-full object-cover photo-wash transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+                  <div className="image-reveal relative h-[280px] overflow-hidden rounded-t-[22px] sm:h-[330px]">
+                    <Photo src={service.image} fallback={stock.acService} alt={service.badge} className="h-full w-full object-cover photo-wash transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 rounded-t-[22px] bg-gradient-to-t from-black/55 via-transparent to-black/10" />
                     <span className="absolute left-5 top-5 rounded-full border border-white/45 bg-black/25 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md">
                       {service.category}
                     </span>
@@ -199,7 +199,7 @@ export function ServicesPage({ openQuote }: { openQuote: () => void }) {
             {plans.slice(0, 3).map((plan) => (
               <article key={plan.title} data-reveal className="rounded-[20px] bg-boss-cream p-4">
                 <div className="image-reveal h-[210px] overflow-hidden rounded-[13px]">
-                  <Photo src={plan.image} fallback="images/about-install.jpg" alt={plan.title} className="h-full w-full object-cover" />
+                  <Photo src={plan.image} fallback={stock.acService} alt={plan.title} className="h-full w-full object-cover" />
                 </div>
                 <div className="px-2 pb-1 pt-5">
                   <span className="eyebrow text-boss-olive">{plan.category}</span>
@@ -226,7 +226,7 @@ export function ServicesPage({ openQuote }: { openQuote: () => void }) {
             {projects.map((project) => (
               <article key={project.title} data-reveal className="overflow-hidden rounded-[20px] bg-white">
                 <div className="image-reveal h-[230px] overflow-hidden">
-                  <Photo src={project.image} fallback="images/about-install.jpg" alt={project.title} className="h-full w-full object-cover photo-wash" />
+                  <Photo src={project.image} fallback={stock.acService} alt={project.title} className="h-full w-full object-cover photo-wash" />
                 </div>
                 <div className="p-6">
                   <p className="flex items-center gap-2 font-body text-[11px] text-boss-ink/50"><MapPin size={12} /> {project.location}</p>

@@ -1,110 +1,77 @@
-import { useState, type FormEvent } from "react";
-import { Camera, Check, Mail, MapPin, Network, Phone, Play } from "lucide-react";
-import { navigation, pageHref } from "../lib/router";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { navigation, navHref, pageHref } from "../lib/router";
+import { locationRegions } from "../data";
 import { Logo } from "./ui";
 
+const jobs = [
+  ["AC repair and replacement", "/service/cooling-systems"],
+  ["Furnace repair and replacement", "/service/heating-furnaces"],
+  ["Indoor air quality", "/service/indoor-air-quality"],
+  ["Maintenance plans", "/services"],
+];
+
 export function SiteFooter({ openQuote }: { openQuote: () => void }) {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-    setEmail("");
-  };
-
   return (
-    <footer id="site-footer" className="bg-[#151714] text-white">
-      <div className="container-shell pt-16 sm:pt-20">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.6fr_0.6fr_1fr]">
-          <div>
-            <Logo footer />
-            <p className="body-copy mt-6 max-w-[330px] text-[13px] text-white/55">
-              Subscribe for seasonal comfort tips, efficiency insights, and service reminders
-              from the BOSS team.
-            </p>
-            <form onSubmit={handleSubscribe} className="mt-6 flex max-w-[370px] flex-col gap-2 sm:flex-row">
-              <input
-                required
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="Enter your email"
-                aria-label="Email address"
-                className="h-11 flex-1 rounded-full border border-white/20 bg-transparent px-5 font-body text-[12px] text-white outline-none placeholder:text-white/35 focus:border-boss-moss"
-              />
-              <button
-                type="submit"
-                className="h-11 rounded-full bg-boss-olive px-6 text-[10px] font-extrabold uppercase tracking-[0.14em] transition hover:bg-boss-moss"
-              >
-                Submit
-              </button>
-            </form>
-            {subscribed && (
-              <p className="mt-3 flex items-center gap-2 font-body text-[12px] text-boss-ice">
-                <Check size={13} /> You&apos;re on the list. Welcome to BOSS.
-              </p>
-            )}
-          </div>
+    <footer id="site-footer" className="bg-boss-ink text-white">
+      <div className="container-shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <Logo footer />
+          <p className="mt-4 max-w-[280px] text-[15px] leading-snug text-white/75">
+            Heating and cooling repair, replacement, and maintenance. We price the work before we start.
+          </p>
+          <button
+            type="button"
+            onClick={openQuote}
+            className="mt-5 h-10 rounded-md bg-boss-moss px-4 text-[15px] font-semibold text-boss-ink transition-colors hover:bg-boss-moss-dark"
+          >
+            Request an appointment
+          </button>
+        </div>
 
-          <div>
-            <p className="text-[12px] font-bold">Quick Links</p>
-            <div className="mt-5 grid gap-3">
-              {navigation.slice(0, 3).map((link) => (
-                <a key={link.path} href={pageHref(link.path)} className="body-copy text-[12px] text-white/50 transition hover:text-white">
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-[12px] font-bold">Explore</p>
-            <div className="mt-5 grid gap-3">
-              <a href={pageHref("/services")} className="body-copy text-[12px] text-white/50 transition hover:text-white">All Services</a>
-              <a href={pageHref("/locations")} className="body-copy text-[12px] text-white/50 transition hover:text-white">Locations</a>
-              <a href="#/?section=work" className="body-copy text-[12px] text-white/50 transition hover:text-white">Installations</a>
-              <button type="button" onClick={openQuote} className="body-copy text-left text-[12px] text-white/50 transition hover:text-white">Book Service</button>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-[12px] font-bold">Contact</p>
-            <div className="mt-5 grid gap-3">
-              <a href="mailto:hello@bosshvac.com" className="flex items-center gap-2 body-copy text-[12px] text-white/50 transition hover:text-white">
-                <Mail size={14} className="text-boss-moss" /> hello@bosshvac.com
+        <div>
+          <p className="text-[14px] font-semibold uppercase tracking-wide text-white/60">Services</p>
+          <div className="mt-3 grid gap-2">
+            {jobs.map(([label, path]) => (
+              <a key={label} href={pageHref(path)} className="text-[15px] text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline">
+                {label}
               </a>
-              <a href="tel:+18005550199" className="flex items-center gap-2 body-copy text-[12px] text-white/50 transition hover:text-white">
-                <Phone size={14} className="text-boss-moss" /> (800) 555-0199
-              </a>
-              <span className="flex items-center gap-2 body-copy text-[12px] text-white/50">
-                <MapPin size={14} className="text-boss-moss" /> 1400 Airway Blvd, Suite 200
-              </span>
-            </div>
-            <div className="mt-6 flex items-center gap-2">
-              {[Camera, Network, Play].map((Social, index) => (
-                <a
-                  key={index}
-                  href={pageHref("/contact")}
-                  aria-label={["BOSS gallery", "BOSS professional network", "BOSS videos"][index]}
-                  className="grid h-9 w-9 place-items-center rounded-full bg-white text-boss-ink transition hover:bg-boss-moss"
-                >
-                  <Social size={15} />
-                </a>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/12 py-7 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          <p className="font-body text-[11px] text-white/40">
-            © 2026 BOSS Climate Control. All rights reserved.
-          </p>
-          <p className="font-body text-[11px] text-white/40">
-            Perfect air. Every season. · Licensed, insured &amp; locally trusted.
-          </p>
+        <div>
+          <p className="text-[14px] font-semibold uppercase tracking-wide text-white/60">Company</p>
+          <div className="mt-3 grid gap-2">
+            {navigation.map((link) => (
+              <a key={link.label} href={navHref(link)} className="text-[15px] text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline">
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
+
+        <div>
+          <p className="text-[14px] font-semibold uppercase tracking-wide text-white/60">Service area</p>
+          <p className="mt-3 text-[15px] leading-snug text-white/85">
+            {locationRegions.map((region) => region.name).join(" · ")}
+          </p>
+          <div className="mt-4 grid gap-2 text-[15px]">
+            <a href="tel:+18005550199" className="inline-flex items-center gap-2 underline-offset-4 transition-colors hover:text-white hover:underline">
+              <Phone size={15} /> (800) 555-0199
+            </a>
+            <a href="mailto:hello@bosshvac.com" className="inline-flex items-center gap-2 text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline">
+              <Mail size={15} /> hello@bosshvac.com
+            </a>
+            <span className="inline-flex items-start gap-2 text-white/85">
+              <MapPin size={15} className="mt-0.5 shrink-0" /> 1400 Airway Blvd, Suite 200
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/15">
+        <p className="container-shell py-4 text-[13px] text-white/55">
+          © 2026 BOSS Heating &amp; Cooling. Licensed and insured.
+        </p>
       </div>
     </footer>
   );

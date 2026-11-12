@@ -2,21 +2,15 @@ import type { MouseEvent, ReactNode } from "react";
 import { ArrowUpRight, Flame, Snowflake, Wind, Wrench } from "lucide-react";
 import { cn } from "../utils/cn";
 
-export function Logo({ footer = false }: { footer?: boolean }) {
+export function Logo({ footer = false, onDark = false }: { footer?: boolean; onDark?: boolean }) {
+  const darkBg = footer || onDark;
+
   return (
-    <div className="flex items-center gap-2.5" aria-label="BOSS Climate Control">
-      <span
-        className={cn(
-          "grid h-8 w-8 place-items-center rounded-full",
-          footer ? "bg-boss-olive text-white" : "bg-white text-boss-olive"
-        )}
-      >
-        <Snowflake size={17} strokeWidth={2.4} />
-      </span>
-      <span className="text-[19px] font-extrabold tracking-[-0.055em] text-white">
-        BOSS<sup className="ml-0.5 text-[8px] font-semibold tracking-normal">®</sup>
-      </span>
-    </div>
+    <img
+      src="/images/boss%20hvac%20logo.png"
+      alt="BOSS Heating & Air"
+      className={cn("h-21 w-auto", darkBg && "rounded-md bg-white px-2 py-1")}
+    />
   );
 }
 
@@ -49,13 +43,8 @@ export function PillButton({
 }: PillButtonProps) {
   const content = (
     <>
-      <span className="btn-text-mask">
-        <span>{label}</span>
-        <span aria-hidden="true">{label}</span>
-      </span>
-      <span className="btn-arrow">
-        <ArrowUpRight size={15} strokeWidth={2.2} />
-      </span>
+      <span>{label}</span>
+      <ArrowUpRight size={16} strokeWidth={2.2} />
     </>
   );
 

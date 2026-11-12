@@ -41,8 +41,8 @@ export function QuoteModal({ open, onClose }: { open: boolean; onClose: () => vo
         aria-label="Request a BOSS estimate"
       >
         <div className="flex items-start justify-between">
-          <div className="rounded-full bg-boss-ink px-4 py-3">
-            <Logo />
+          <div className="rounded-md bg-boss-ink px-3 py-2">
+            <Logo onDark />
           </div>
           <button
             type="button"
@@ -58,10 +58,9 @@ export function QuoteModal({ open, onClose }: { open: boolean; onClose: () => vo
           <div className="flex min-h-[480px] flex-col items-center justify-center text-center">
             <CheckCircle2 size={54} strokeWidth={1.4} className="mb-6 text-boss-olive" />
             <p className="eyebrow text-boss-olive">Request received</p>
-            <h3 className="section-title mt-4 text-[38px] text-boss-ink">Comfort is on the way.</h3>
+            <h3 className="section-title mt-4 text-[32px] text-boss-ink">We got the request.</h3>
             <p className="body-copy mt-4 max-w-[350px]">
-              Thanks for reaching out. A BOSS comfort specialist will contact you shortly to confirm
-              the details and schedule your visit.
+              Someone from the office will call to confirm the address and the appointment window.
             </p>
             <button
               type="button"
@@ -74,13 +73,12 @@ export function QuoteModal({ open, onClose }: { open: boolean; onClose: () => vo
         ) : (
           <>
             <div className="mt-10">
-              <p className="eyebrow text-boss-olive">Book with BOSS</p>
-              <h3 className="section-title mt-3 text-[40px] text-boss-ink sm:text-[48px]">
-                Request an estimate
+              <p className="eyebrow text-boss-olive">Schedule service</p>
+              <h3 className="section-title mt-3 text-[32px] text-boss-ink sm:text-[36px]">
+                Tell us what is going on
               </h3>
               <p className="body-copy mt-3 max-w-[390px]">
-                Tell us what your space needs. We'll design the right heating, cooling, or air
-                quality solution—no pressure, just honest expertise.
+                No heat, no cooling, or a system you want priced for replacement. We will call you back with a time.
               </p>
             </div>
 

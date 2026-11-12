@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-boss-cream: #f7f7f5;
-  --color-boss-ink: #171c18;
-  --color-boss-olive: #666832;
-  --color-boss-olive-dark: #4c5129;
-  --color-boss-moss: #8b8e55;
-  --color-boss-mist: #eeefe9;
-  --color-boss-ice: #9cc6d3;
-  --font-display: "Manrope", sans-serif;
-  --font-body: "Nunito Sans", sans-serif;
+  --color-boss-cream: #f4f6f8;
+  --color-boss-ink: #142033;
+  --color-boss-olive: #1d4e89;
+  --color-boss-olive-dark: #163a66;
+  --color-boss-moss: #e08a2d;
+  --color-boss-moss-dark: #c6751f;
+  --color-boss-mist: #e7eef5;
+  --color-boss-ice: #d5e3f2;
+  --font-display: "Barlow", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 }
 
 :root {
-  --paper: #f7f7f5;
-  --ink: #171c18;
-  --olive: #666832;
-  --olive-dark: #4c5129;
-  --ice: #9cc6d3;
+  --paper: #f4f6f8;
+  --ink: #142033;
+  --olive: #1d4e89;
+  --olive-dark: #163a66;
+  --ice: #d5e3f2;
 }
 
 html {
@@ -26,16 +27,23 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: #fff;
   color: var(--ink);
-  font-family: "Manrope", sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Barlow", sans-serif;
+}
+
 section[id],
 footer[id] {
-  scroll-margin-top: 110px;
+  scroll-margin-top: 150px;
 }
 
 ::selection {
@@ -64,11 +72,11 @@ footer[id] {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-family: "Manrope", sans-serif;
-  font-size: 10px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0.19em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -82,18 +90,18 @@ footer[id] {
 }
 
 .section-title {
-  font-family: "Manrope", sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 @layer components {
   .body-copy {
-    font-family: "Nunito Sans", sans-serif;
-    font-size: clamp(14px, 1.05vw, 16px);
-    line-height: 1.65;
-    color: #6f756c;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: clamp(16px, 1.05vw, 18px);
+    line-height: 1.55;
+    color: #3e4c5e;
   }
 }
 
@@ -101,22 +109,23 @@ footer[id] {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  height: 48px;
-  padding: 0 6px 0 22px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   white-space: nowrap;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .btn-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgb(23 28 24 / 0.14);
+  background: var(--olive-dark);
+  color: #fff;
 }
 
 .btn-light {
@@ -173,13 +182,14 @@ footer[id] {
 .arrow-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  gap: 0.35rem;
+  font-family: "Barlow", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--olive);
-  transition: gap 0.3s ease, color 0.3s ease;
+  transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .arrow-link:hover {
@@ -225,10 +235,6 @@ footer[id] {
 
 .image-reveal {
   overflow: hidden;
-}
-
-.image-reveal img {
-  will-change: transform;
 }
 
 .wave-lines {

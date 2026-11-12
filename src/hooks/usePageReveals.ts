@@ -11,25 +11,6 @@ export function usePageReveals(
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
-      const reveals = gsap.utils.toArray<HTMLElement>("[data-reveal]");
-      gsap.set(reveals, { opacity: 0, y: 36 });
-
-      ScrollTrigger.batch(reveals, {
-        start: "top 90%",
-        once: true,
-        interval: 0.08,
-        batchMax: 5,
-        onEnter: (batch) =>
-          gsap.to(batch, {
-            opacity: 1,
-            y: 0,
-            duration: 0.95,
-            stagger: 0.1,
-            ease: "power3.out",
-            overwrite: true,
-          }),
-      });
-
       gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((element) => {
         gsap.fromTo(
           element,

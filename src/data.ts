@@ -1,3 +1,5 @@
+import { stock } from "./lib/assets";
+
 const px = (id: string | number, w = 1200, h = 900, ext: "jpeg" | "png" = "jpeg") =>
   `https://images.pexels.com/photos/${id}/pexels-photo-${id}.${ext}?auto=compress&cs=tinysrgb&fit=crop&w=${w}&h=${h}`;
 
@@ -38,7 +40,7 @@ export const services: Service[] = [
     title: "Cooling\nSystems",
     description: "High-efficiency AC installs, replacements, and precision tune-ups.",
     category: "Residential",
-    image: "images/initiatives-technician.jpg",
+    image: stock.acService,
     badge: "Precision Cooling",
     highlight: "Up to 30% lower cooling costs",
     icon: "snowflake",
@@ -49,7 +51,7 @@ export const services: Service[] = [
     title: "Heating &\nFurnaces",
     description: "Dependable heat, engineered for quiet performance and lasting comfort.",
     category: "Residential",
-    image: "images/about-install.jpg",
+    image: stock.acGauges,
     badge: "Winter Ready",
     highlight: "97% AFUE high-efficiency options",
     icon: "flame",
@@ -71,7 +73,7 @@ export const services: Service[] = [
     title: "Smart\nMaintenance",
     description: "Proactive service plans that prevent breakdowns before they happen.",
     category: "Maintenance",
-    image: "images/boss-service-team.jpg",
+    image: stock.crew,
     badge: "Always Protected",
     highlight: "Priority response, 24 hours a day",
     icon: "wrench",
@@ -112,7 +114,7 @@ export const serviceDetails: ServiceDetail[] = [
     overviewTitle: "No guesswork. No oversized equipment. Just the right fit.",
     overviewText:
       "A proper cooling system starts with a load calculation, not a sales pitch. BOSS measures room-by-room heat gain, duct capacity, insulation, airflow, and sun exposure before recommending equipment. The result is steadier temperatures, lower humidity, quieter operation, and a system that does not waste energy fighting itself.",
-    overviewImage: "images/mission-thermostat.jpg",
+    overviewImage: stock.home,
     stats: [
       { value: "Up to 30%", label: "Lower cooling costs" },
       { value: "SEER2 18+", label: "High-efficiency options" },
@@ -158,7 +160,7 @@ export const serviceDetails: ServiceDetail[] = [
     overviewTitle: "Warmth that is quiet, safe, and engineered for your climate.",
     overviewText:
       "Heating problems are rarely just about the furnace. Uneven rooms, dry air, short cycling, and rising bills often point to duct losses, poor controls, or incorrect sizing. Our technicians inspect the complete system, explain what is happening in plain language, and build a solution around long-term reliability and safety.",
-    overviewImage: "images/boss-workshop.jpg",
+    overviewImage: stock.mechanical,
     stats: [
       { value: "97%", label: "AFUE furnace options" },
       { value: "24/7", label: "No-heat response" },
@@ -204,7 +206,7 @@ export const serviceDetails: ServiceDetail[] = [
     overviewTitle: "Comfort is not just temperature. It is what you breathe.",
     overviewText:
       "Dust, pollen, excess humidity, volatile compounds, and leaky ducts can circulate through a building all day. BOSS starts with measured data, then combines the right filtration, fresh-air strategy, and duct corrections into one practical plan. No one-size-fits-all gadgets—just verified improvements you can feel.",
-    overviewImage: "images/initiatives-technician.jpg",
+    overviewImage: stock.acService,
     stats: [
       { value: "99%", label: "Particle capture available" },
       { value: "MERV 13+", label: "Upgraded filtration" },
@@ -245,12 +247,12 @@ export const serviceDetails: ServiceDetail[] = [
     shortTitle: "Smart Maintenance",
     heroText:
       "A proactive care program that combines scheduled service, system diagnostics, priority response, and clear reporting—so comfort never depends on luck.",
-    heroImage: "images/boss-service-team.jpg",
+    heroImage: stock.crew,
     overviewLabel: "Care Before Repair",
     overviewTitle: "The best service call is the one you never need.",
     overviewText:
       "Most HVAC failures build slowly: a weakening capacitor, a clogged drain, a filter restriction, a small refrigerant loss. BOSS maintenance catches those signs early with measured inspections, documented results, and practical recommendations. Members receive priority scheduling, repair discounts, and a complete service history for every system.",
-    overviewImage: "images/boss-workshop.jpg",
+    overviewImage: stock.mechanical,
     stats: [
       { value: "21 Points", label: "Every seasonal visit" },
       { value: "98%", label: "First-time fix rate" },
@@ -274,7 +276,7 @@ export const serviceDetails: ServiceDetail[] = [
     gallery: [
       { image: px(7347538, 1000, 800), title: "Preventive inspection", description: "Small issues found before they become repairs." },
       { image: px(6471913, 1000, 800), title: "Electrical verification", description: "Safe, stable operation confirmed at every visit." },
-      { image: "images/about-install.jpg", title: "Accountable local team", description: "The same standards on every service call." },
+      { image: stock.acGauges, title: "Accountable local team", description: "The same standards on every service call." },
     ],
     outcome: "Longer equipment life, steadier efficiency, and a team that knows your system inside and out.",
     faqs: [
@@ -516,9 +518,9 @@ export const plans: Plan[] = [
 
 export const team = [
   { name: "Sam", role: "Founder & CEO", image: "images/sam.png" },
-  { name: "Elena Reyes", role: "Comfort Specialist", image: "images/team-2.jpg" },
-  { name: "Daniel Brooks", role: "Lead Systems Engineer", image: "images/team-3.jpg" },
-  { name: "Maya Chen", role: "Air Quality Lead", image: "images/team-4.jpg" },
+  { name: "Elena Reyes", role: "Comfort Specialist", image: stock.elena },
+  { name: "Daniel Brooks", role: "Lead Systems Engineer", image: stock.daniel },
+  { name: "Maya Chen", role: "Air Quality Lead", image: stock.maya },
 ];
 
 export const coreValues = [
@@ -526,13 +528,13 @@ export const coreValues = [
     number: "01",
     title: "Precision",
     description: "We measure twice, calculate properly, and verify every system before we call the work complete.",
-    image: "images/mission-thermostat.jpg",
+    image: stock.home,
   },
   {
     number: "02",
     title: "Accountability",
     description: "Clear pricing, documented findings, and technicians who stand behind every recommendation.",
-    image: "images/boss-workshop.jpg",
+    image: stock.mechanical,
   },
   {
     number: "03",
@@ -544,7 +546,7 @@ export const coreValues = [
     number: "04",
     title: "Care",
     description: "Respect for your home, your time, and the people who rely on the air inside it.",
-    image: "images/boss-service-team.jpg",
+    image: stock.crew,
   },
 ];
 
@@ -590,7 +592,7 @@ export const milestones = [
     category: "BOSS Today",
     title: "Connected Comfort",
     description: "Local crews, digital service records, smart diagnostics, and 24/7 priority response.",
-    image: "images/boss-service-team.jpg",
+    image: stock.crew,
     metric: "24/7",
     metricLabel: "Always ready",
   },

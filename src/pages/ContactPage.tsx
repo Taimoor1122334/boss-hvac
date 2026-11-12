@@ -7,6 +7,7 @@ import { Photo } from "../components/Photo";
 import { FAQAccordion } from "../components/FAQAccordion";
 import { Eyebrow, PillButton, WaveLines } from "../components/ui";
 import { faqs, locationRegions } from "../data";
+import { stock } from "../lib/assets";
 
 const inputClass =
   "w-full rounded-xl border border-boss-ink/12 bg-white px-4 py-3 font-body text-[13px] text-boss-ink outline-none transition placeholder:text-boss-ink/35 focus:border-boss-olive";
@@ -36,11 +37,11 @@ export function ContactPage({ openQuote }: { openQuote: () => void }) {
   return (
     <>
       <PageHero
-        eyebrow="Contact BOSS"
-        title={"Let's Get Your\nComfort Right"}
-        description="Questions, estimates, service scheduling, or an urgent repair—reach the BOSS team through whichever channel works best for you."
-        image="images/boss-workshop.jpg"
-        fallback="images/boss-hero.jpg"
+        eyebrow="Contact"
+        title={"Schedule a visit or call now."}
+        description="For no heat or no cooling, call (800) 555-0199. For an estimate, send a few details and we will call you back the same day."
+        image={stock.mechanical}
+        fallback={stock.home}
         crumb="Contact Us"
         ctaLabel="Call Now"
         ctaHref="tel:+18005550199"
@@ -97,7 +98,7 @@ export function ContactPage({ openQuote }: { openQuote: () => void }) {
           </div>
           <aside data-reveal className="flex flex-col overflow-hidden rounded-[22px] bg-boss-cream">
             <div className="image-reveal h-[200px] overflow-hidden">
-              <Photo src="images/boss-workshop.jpg" fallback="images/about-install.jpg" alt="BOSS operations center" className="h-full w-full object-cover" />
+              <Photo src={stock.mechanical} fallback={stock.acService} alt="BOSS operations center" className="h-full w-full object-cover" />
             </div>
             <div className="flex flex-1 flex-col justify-between p-6">
               <div>

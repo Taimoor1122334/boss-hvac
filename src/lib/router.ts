@@ -5,13 +5,19 @@ export type SiteRoute = {
   key: string;
 };
 
-export const navigation = [
-  { label: "Home", path: "/" },
-  { label: "About Us", path: "/about" },
+export const navigation: { label: string; path: string; section?: string }[] = [
   { label: "Services", path: "/services" },
-  { label: "Locations", path: "/locations" },
-  { label: "Contact Us", path: "/contact" },
+  { label: "Specials", path: "/", section: "specials" },
+  { label: "Financing", path: "/", section: "financing" },
+  { label: "Service Area", path: "/locations" },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "/contact" },
 ];
+
+export function navHref(link: { path: string; section?: string }) {
+  if (link.section) return `#/?section=${link.section}`;
+  return link.path === "/" ? "#/" : `#${link.path}`;
+}
 
 export function parseRoute(hash = typeof window === "undefined" ? "" : window.location.hash): SiteRoute {
   const raw = hash.replace(/^#/, "") || "/";
@@ -40,16 +46,16 @@ export function homeSectionHref(section: string): string {
 export function routeTitle(route: SiteRoute, serviceName?: string): string {
   switch (route.path) {
     case "/about":
-      return "About BOSS | Built on Craft";
+      return "About BOSS Heating & Cooling";
     case "/services":
-      return "Services | BOSS Climate Control";
+      return "HVAC Services | BOSS Heating & Cooling";
     case "/service":
-      return `${serviceName ?? "Service"} | BOSS Climate Control`;
+      return `${serviceName ?? "Service"} | BOSS Heating & Cooling`;
     case "/locations":
-      return "Service Locations | BOSS Climate Control";
+      return "Service Area | BOSS Heating & Cooling";
     case "/contact":
-      return "Contact BOSS | Book Service";
+      return "Schedule Service | BOSS Heating & Cooling";
     default:
-      return "BOSS — Perfect Air, Every Season";
+      return "BOSS Heating & Cooling | Repair, Installation & Maintenance";
   }
 }

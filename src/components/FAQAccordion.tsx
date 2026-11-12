@@ -15,7 +15,7 @@ export function FAQAccordion({ items }: { items: { question: string; answer: str
               type="button"
               aria-expanded={isOpen}
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center gap-4 py-5 text-left"
+              className="flex w-full items-center gap-4 py-5 text-left transition-colors hover:text-boss-olive"
             >
               <span className="grid h-5 w-5 shrink-0 place-items-center text-boss-olive">
                 {isOpen ? <Minus size={15} /> : <Plus size={15} />}

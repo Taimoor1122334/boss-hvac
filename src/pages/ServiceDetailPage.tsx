@@ -6,6 +6,7 @@ import { FAQAccordion } from "../components/FAQAccordion";
 import { Eyebrow, PillButton, WaveLines, serviceIcons } from "../components/ui";
 import { serviceHref } from "../lib/router";
 import { serviceDetails, services } from "../data";
+import { stock } from "../lib/assets";
 
 export function ServiceDetailPage({ slug, openQuote }: { slug?: string; openQuote: () => void }) {
   const detail = serviceDetails.find((item) => item.slug === slug) ?? serviceDetails[0];
@@ -51,7 +52,7 @@ export function ServiceDetailPage({ slug, openQuote }: { slug?: string; openQuot
             </div>
           </div>
           <div data-reveal className="image-reveal relative min-h-[430px] overflow-hidden rounded-[22px] bg-boss-cream sm:min-h-[540px]">
-            <Photo src={detail.overviewImage} fallback="images/about-install.jpg" alt={detail.shortTitle} className="h-full w-full object-cover" />
+            <Photo src={detail.overviewImage} fallback={stock.acService} alt={detail.shortTitle} className="h-full w-full object-cover" />
             <div className="absolute bottom-5 left-5 flex items-center gap-3 rounded-full border border-white/25 bg-black/35 px-5 py-3 text-white backdrop-blur-md">
               <Thermometer size={17} className="text-boss-ice" />
               <span className="text-[10px] font-bold uppercase tracking-[0.14em]">Measured comfort, verified results</span>
@@ -153,7 +154,7 @@ export function ServiceDetailPage({ slug, openQuote }: { slug?: string; openQuot
             {detail.gallery.map((item) => (
               <article key={item.title} data-reveal className="overflow-hidden rounded-[20px] bg-boss-cream">
                 <div className="image-reveal h-[240px] overflow-hidden">
-                  <Photo src={item.image} fallback="images/about-install.jpg" alt={item.title} className="h-full w-full object-cover photo-wash" />
+                  <Photo src={item.image} fallback={stock.acService} alt={item.title} className="h-full w-full object-cover photo-wash" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-[20px] font-semibold tracking-[-0.04em]">{item.title}</h3>
